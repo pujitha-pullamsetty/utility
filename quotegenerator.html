@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="qg.css">
+    <title>Random Quote Generator</title>
+</head>
+<body>
+    <div class="container home">
+        <h1>🌈 Welcome to Utility Hub 🌈</h1>
+        <div class="nav-grid">
+            <a href="quotegenerator.html" class="nav-card">💬 Random Quote Generator</a>
+            <a href="clock.html" class="nav-card">⏰ Digital Clock & Timer</a>
+            <a href="weather.html" class="nav-card">☁️ Mini Weather App</a>
+            <a href="taskmanager.html" class="nav-card">📝 To-Do / Task Manager</a>
+        </div>
+    </div>
+    <div class="container">
+        <h1>Random Quote Generator</h1>
+        <div id="quote">Click the button below to get a quote!</div>
+        <button onclick="newQuote()">New Quote</button>
+    </div>
+
+    <script>
+        const quotes = [
+            "The best way to get started is to quit talking and begin doing.",
+            "Don’t let yesterday take up too much of today.",
+            "It’s not whether you get knocked down, it’s whether you get up.",
+            "If you are working on something exciting, it will keep you motivated.",
+            "Success is not in what you have, but who you are.",
+            "Hardships often prepare ordinary people for an extraordinary destiny.",
+            "Believe you can and you’re halfway there.",
+            "Life is 10% what happens to us and 90% how we react to it.",
+            "The only way to do great work is to love what you do.",
+            "Dream big and dare to fail."
+        ];
+
+        const quoteEl = document.getElementById('quote');
+
+        function newQuote() {
+            // Fade out
+            quoteEl.style.opacity = 0;
+
+            setTimeout(() => {
+                const randomIndex = Math.floor(Math.random() * quotes.length);
+                quoteEl.textContent = quotes[randomIndex];
+
+                // Fade in
+                quoteEl.style.opacity = 1;
+            }, 500);
+        }
+    </script>
+</body>
+</html>

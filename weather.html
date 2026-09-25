@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="weather.css">
+<title>Mini Weather App</title>
+</head>
+<body>
+    <div class="container home">
+        <h1>🌈 Welcome to Utility Hub 🌈</h1>
+        <div class="nav-grid">
+            <a href="quotegenerator.html" class="nav-card">💬 Random Quote Generator</a>
+            <a href="clock.html" class="nav-card">⏰ Digital Clock & Timer</a>
+            <a href="weather.html" class="nav-card">☁️ Mini Weather App</a>
+            <a href="taskmanager.html" class="nav-card">📝 To-Do / Task Manager</a>
+        </div>
+    </div>
+<div class="container">
+    <h1>Mini Weather App</h1>
+
+    <div class="search-box">
+        <input type="text" id="city-input" placeholder="Enter city name">
+        <button id="search-btn">Get Weather</button>
+    </div>
+
+    <div id="weather-info" class="weather-info">
+        <h2 id="city-name"></h2>
+        <div id="icon"></div>
+        <p id="temperature"></p>
+        <p id="condition"></p>
+        <p id="humidity"></p>
+        <p id="wind"></p>
+    </div>
+
+    <p id="error-msg" class="error-msg"></p>
+</div>
+
+<script>
+const apiKey = "e7e0470b77e66029a8e2baef7fb62ee9"; // Your API key
+
+const searchBtn = document.getElementById("search-btn");
+const cityInput = document.getElementById("city-input");
+
+searchBtn.addEventListener("click", () => {
+    const city = cityInput.value.trim();
+    if (!city) return alert("Please enter a city name.");
+    getWeather(city);
+});
+
+async function getWeather(city) {
+    const errorMsg = document.getElementById("error-msg");
+    errorMsg.textContent = "";
+
+    try {
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`);
+        const data = await response.json();
+        console.log(data);
+
+
+        console.log("API Response:", data);  // ✅ Debug log to inspect full API response
+
+        if (data.cod !== "200") {
+            errorMsg.textContent = "City not found. Please try again!";
+            document.getElementById("weather-info").classList.remove("active");
+            document.body.style.backgroundColor = "#f3e5ab";
+            document.getElementById("icon").textContent = "";
+            return;
+        }
+
+        document.getElementById("city-name").textContent = data.name + ", " + data.sys.country;
+        document.getElementById("temperature").textContent = `Temperature: ${data.main.temp} °C`;
+        document.getElementById("condition").textContent = `Condition: ${data.weather[0].main}`;
+        document.getElementById("humidity").textContent = `Humidity: ${data.main.humidity}%`;
+        document.getElementById("wind").textContent = `Wind: ${data.wind.speed} m/s`;
+
+        let emoji = "";
+        switch (data.weather[0].main.toLowerCase()) {
+            case "clear":
+                emoji = "☀️";
+                document.body.style.backgroundColor = "#fdf6e3";
+                break;
+            case "clouds":
+                emoji = "☁️";
+                document.body.style.backgroundColor = "#cfcfcf";
+                break;
+            case "rain":
+            case "drizzle":
+                emoji = "🌧️";
+                document.body.style.backgroundColor = "#b0c4de";
+                break;
+            case "thunderstorm":
+                emoji = "⛈️";
+                document.body.style.backgroundColor = "#7f7f7f";
+                break;
+            case "snow":
+                emoji = "❄️";
+                document.body.style.backgroundColor = "#f0f8ff";
+                break;
+            default:
+                emoji = "🌤️";
+                document.body.style.backgroundColor = "#f3e5ab";
+        }
+
+        document.getElementById("icon").textContent = emoji;
+        document.getElementById("weather-info").classList.add("active");
+
+    } catch (error) {
+        errorMsg.textContent = "Error fetching weather data!";
+        console.error("Fetch Error:", error);
+    }
+}
+</script>
+
+
+</body>
+</html>

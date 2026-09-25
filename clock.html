@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock & Countdown Timer</title>
+    <link rel="stylesheet" href="clock.css">
+</head>
+<body>
+    <div class="container home">
+        <h1>🌈 Welcome to Utility Hub 🌈</h1>
+        <div class="nav-grid">
+            <a href="quotegenerator.html" class="nav-card">💬 Random Quote Generator</a>
+            <a href="clock.html" class="nav-card">⏰ Digital Clock & Timer</a>
+            <a href="weather.html" class="nav-card">☁️ Mini Weather App</a>
+            <a href="taskmanager.html" class="nav-card">📝 To-Do / Task Manager</a>
+        </div>
+    </div>
+    <div class="container">
+        <h1>Digital Clock & Countdown Timer</h1>
+
+        <!-- Current Time -->
+        <div class="clock-container">
+            <h2>Current Time</h2>
+            <div id="clock" class="clock">00:00:00</div>
+        </div>
+
+        <!-- Countdown Timer -->
+        <div class="countdown-container">
+            <h2>Countdown Timer</h2>
+            <input type="datetime-local" id="countdown-input">
+            <button id="start-btn">Start Countdown</button>
+            <div id="countdown" class="countdown">-- : -- : -- : --</div>
+        </div>
+    </div>
+
+    <script>
+        // Digital Clock
+function updateClock() {
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2,'0');
+    const minutes = String(now.getMinutes()).padStart(2,'0');
+    const seconds = String(now.getSeconds()).padStart(2,'0');
+    document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+}
+
+setInterval(updateClock, 1000);
+updateClock();
+
+// Countdown Timer
+let countdownInterval;
+
+document.getElementById('start-btn').addEventListener('click', () => {
+    const input = document.getElementById('countdown-input').value;
+    if (!input) return alert("Please select a future date and time!");
+    const targetDate = new Date(input);
+
+    clearInterval(countdownInterval);
+
+    countdownInterval = setInterval(() => {
+        const now = new Date();
+        const diff = targetDate - now;
+
+        if (diff <= 0) {
+            clearInterval(countdownInterval);
+            document.getElementById('countdown').textContent = "TIME'S UP!";
+            document.body.style.backgroundColor = '#ff00ff';
+            document.body.style.color = '#0d0d0d';
+            return;
+        }
+
+        const days = Math.floor(diff / (1000*60*60*24));
+        const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+        const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
+        const seconds = Math.floor((diff % (1000*60)) / 1000);
+
+        document.getElementById('countdown').textContent = 
+            `${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
+
+    }, 1000);
+});
+
+    </script>
+</body>
+</html>

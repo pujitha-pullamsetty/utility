@@ -1,0 +1,134 @@
+/* Base styling */
+body {
+    font-family: 'Courier New', monospace;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #0d0d0d; /* black */
+    color: #fff;
+    text-align: center;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.container {
+    max-width: 600px;
+    width: 100%;
+    padding: 30px;
+    background: #1a1a1a; /* dark purple */
+    border-radius: 15px;
+    box-shadow: 0 0 30px #ff00ff, 0 0 60px #00ffff;
+    transition: box-shadow 0.5s ease;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #ff00ff; /* neon pink */
+    text-shadow: 0 0 10px #ff00ff;
+}
+
+h2 {
+    color: #00ffff; /* neon blue */
+    margin-bottom: 10px;
+    text-shadow: 0 0 8px #00ffff;
+}
+
+.clock, .countdown {
+    font-size: 2em;
+    margin: 15px 0;
+    padding: 10px;
+    border-radius: 10px;
+    background: #2b002b;
+    color: #ff00ff;
+    box-shadow: 0 0 15px #ff00ff, 0 0 30px #00ffff;
+    transition: all 0.5s ease;
+}
+
+/* Input and button */
+input[type="datetime-local"] {
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1em;
+    margin-right: 10px;
+}
+
+button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff00ff;
+    color: #0d0d0d;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #00ffff;
+    transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    .clock, .countdown {
+        font-size: 1.5em;
+    }
+
+    input[type="datetime-local"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #d3bfbf;
+    margin-bottom: 40px;
+}
+
+.nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.nav-card {
+    background: #181818;
+    padding: 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.nav-card:hover {
+    background-color: #08f7fe;
+    color: #000;
+    transform: scale(1.05);
+}

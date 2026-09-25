@@ -1,0 +1,77 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: #b60678;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #d3bfbf;
+    margin-bottom: 40px;
+}
+
+.nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.nav-card {
+    background: #181818;
+    padding: 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.nav-card:hover {
+    background-color: #08f7fe;
+    color: #000;
+    transform: scale(1.05);
+}
+
+.floating-emoji {
+    position: absolute;
+    font-size: 3em;
+    animation: float 6s infinite ease-in-out;
+}
+
+.floating-emoji:nth-child(1) { top: 40%; left: 20%; animation-delay: 0s; }
+.floating-emoji:nth-child(2) { top: 40%; left: 70%; animation-delay: 2s; }
+.floating-emoji:nth-child(3) { top: 40%; left: 55%; animation-delay: 4s; }
+.floating-emoji:nth-child(4) { top: 60%; left: 55%; animation-delay: 0s; }
+.floating-emoji:nth-child(5) { top: 40%; left: 43%; animation-delay: 2s; }
+.floating-emoji:nth-child(6) { top: 60%; left: 43%; animation-delay: 4s; }
+.floating-emoji:nth-child(7) { top: 60%; left: 20%; animation-delay: 0s; }
+.floating-emoji:nth-child(8) { top: 80%; left: 55%; animation-delay: 2s; }
+.floating-emoji:nth-child(9) { top: 60%; left: 30%; animation-delay: 4s; }
+.floating-emoji:nth-child(10) { top: 80%; left: 70%; animation-delay: 0s; }
+.floating-emoji:nth-child(11) { top: 80%; left: 30%; animation-delay: 2s; }
+.floating-emoji:nth-child(12) { top: 80%; left: 20%; animation-delay: 4s; }
+.floating-emoji:nth-child(13) { top: 40%; left: 30%; animation-delay: 0s; }
+.floating-emoji:nth-child(14) { top: 60%; left: 70%; animation-delay: 2s; }
+.floating-emoji:nth-child(15) { top: 80%; left: 43%; animation-delay: 4s; }
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+@media (max-width: 600px) {
+    h1 { font-size: 1.8em; }
+}

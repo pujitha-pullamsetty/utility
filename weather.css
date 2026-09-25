@@ -1,0 +1,135 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Georgia', serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #e962ee; /* vintage beige */
+    color: #4b0000; /* dark maroon */
+    transition: background-color 0.5s ease;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 500px;
+    width: 90%;
+    padding: 30px;
+    background: rgba(15, 15, 0, 0.85);
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 0 20px #d4a373; /* retro mustard shadow */
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 2em;
+    color: #f4efeb; /* retro brown */
+}
+
+.search-box {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+input[type="text"] {
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    flex: 1;
+}
+
+button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #d4a373; /* mustard */
+    color: #4b0000;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #b56b3c;
+    transform: scale(1.05);
+}
+
+.weather-info {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    font-size: 1.2em;
+}
+
+.weather-info.active {
+    opacity: 1;
+}
+
+#icon {
+    font-size: 3em;
+    margin: 10px 0;
+    animation: float 2s infinite alternate;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
+}
+
+.error-msg {
+    color: #ff4c4c;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.5em;
+    }
+
+    #icon {
+        font-size: 2.5em;
+    }
+}
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #d3bfbf;
+    margin-bottom: 40px;
+}
+
+.nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.nav-card {
+    background: #181818;
+    padding: 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.nav-card:hover {
+    background-color: #08f7fe;
+    color: #000;
+    transform: scale(1.05);
+}
